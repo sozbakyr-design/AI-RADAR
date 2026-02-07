@@ -1,0 +1,147 @@
+/* CSS Variables & Theme */
+:root {
+    /* Colors */
+    --bg-main: #0a0a0f;
+    --bg-card: #121216;
+    --bg-hover: #1a1a20;
+    --bg-overlay: rgba(10, 10, 15, 0.85);
+
+    /* Safe Area Variables */
+    --safe-area-top: env(safe-area-inset-top);
+    --safe-area-bottom: env(safe-area-inset-bottom);
+
+    /* Accent Colors */
+    --accent-primary: #00ff9d;
+    --accent-secondary: #7000ff;
+    --accent-blue: #3b82f6;
+    --accent-orange: #f97316;
+    --accent-pink: #ec4899;
+
+    /* Gradients */
+    --gradient-money: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+    --gradient-premium: linear-gradient(135deg, #7000ff 0%, #ec4899 100%);
+    --gradient-hot: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+    --gradient-dark: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+
+    /* One-off gradients for text */
+    --accent-gradient: var(--gradient-money);
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(20px);
+
+    /* Text */
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+    --text-muted: #5a5a6e;
+    --text-success: #10b981;
+
+    /* Spacing & Layout */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --nav-height: 90px;
+
+    /* Effects */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px rgba(0, 255, 157, 0.15);
+
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    /* App-like feel */
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+
+    /* Safe Area Padding */
+    padding-top: var(--safe-area-top);
+    padding-bottom: var(--safe-area-bottom);
+}
+
+/* App Container */
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: var(--nav-height);
+    background: var(--bg-main);
+}
+
+/* Typography */
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Utilities */
+.container {
+    padding: 20px;
+}
+
+/* Cards - Feed Style */
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: var(--glass-border);
+    padding: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.card:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: var(--gradient-money);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 16px 24px;
+    font-weight: 600;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    transition: var(--transition-bounce);
+}
+
+/* Icons */
+i {
+    stroke-width: 2px;
+}

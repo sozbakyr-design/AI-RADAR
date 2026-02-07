@@ -1,0 +1,389 @@
+/* Layout */
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-content {
+    flex: 1;
+    width: 100%;
+}
+
+/* Bottom Nav - Glassmorphism */
+.bottom-nav {
+    position: fixed;
+    bottom: 20px;
+    /* Floating look */
+    left: 20px;
+    right: 20px;
+    height: 70px;
+    background: rgba(20, 20, 25, 0.7);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: 30px;
+    /* Pill shape */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 33%;
+    transition: color 0.3s ease;
+}
+
+.nav-item i {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-item.active {
+    color: var(--accent-primary);
+}
+
+.nav-item.active i {
+    transform: translateY(-4px);
+    color: var(--accent-primary);
+    fill: rgba(0, 255, 157, 0.1);
+    /* Subtle fill */
+}
+
+/* Feed Improvements */
+.pull-refresh-cue {
+    text-align: center;
+    padding: 20px 0 10px 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    opacity: 0.6;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}
+
+/* Tools Grid (Detail Page) */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.tool-item {
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.tool-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    /* Emoji fallback */
+}
+
+.tool-name {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+/* Checklist (Detail Page) */
+.checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: var(--glass-bg);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.checkbox-item.checked {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--text-muted);
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+}
+
+.checkbox-item.checked .custom-checkbox {
+    border-color: var(--accent-primary);
+    background: var(--accent-primary);
+}
+
+/* AI Data Ticker */
+.ticker-container {
+    width: 100%;
+    background: rgba(79, 70, 229, 0.15);
+    /* Semi-transparent Indigo */
+    border-bottom: 1px solid rgba(79, 70, 229, 0.25);
+    overflow: hidden;
+    height: 36px;
+    /* Slightly taller */
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    backdrop-filter: blur(12px);
+    /* Stronger blur */
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.ticker-wrap {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.ticker-move {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 60s linear infinite;
+    /* Slower for readability */
+}
+
+.ticker-item {
+    display: inline-block;
+    padding: 0 40px;
+    font-size: 12px;
+    /* Larger text */
+    color: #ffffff;
+    /* Pure White for Max Contrast */
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    /* Shadow for depth */
+}
+
+@keyframes ticker {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            DESKTOP RESPONSIVENESS                          */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+
+    /* Layout Adjustments */
+    body {
+        padding-bottom: 0;
+        /* Remove safe area bottom padding for desktop */
+    }
+
+    #app {
+        padding-bottom: 0;
+        /* Remove bottom nav padding */
+        flex-direction: row;
+    }
+
+    .app-layout {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    /* Sidebar Navigation */
+    .bottom-nav {
+        position: sticky;
+        /* Sticky sidebar */
+        top: 0;
+        left: 0;
+        bottom: auto;
+        width: 280px;
+        height: 100vh;
+        background: rgba(10, 10, 15, 0.6);
+        /* Slightly more transparent */
+        backdrop-filter: blur(40px);
+        /* Stronger blur */
+        border-radius: 0;
+        border: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 40px;
+        gap: 10px;
+        box-shadow: none;
+        z-index: 1000;
+    }
+
+    .nav-item {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 16px 32px;
+        gap: 16px;
+        font-size: 14px;
+        border-radius: 0 24px 24px 0;
+        /* Rounded tabs on right */
+        margin-right: 16px;
+    }
+
+    .nav-item i {
+        width: 24px;
+        height: 24px;
+    }
+
+    .nav-item.active {
+        background: rgba(0, 255, 157, 0.05);
+        /* Subtle highlight */
+        border-right: 3px solid var(--accent-primary);
+    }
+
+    .nav-item.active i {
+        transform: none;
+        /* Disable bounce on desktop sidebar */
+    }
+
+    /* Main Content Area */
+    .app-content {
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+
+    /* Feed Grid Layout */
+    .feed-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 24px;
+    }
+
+    .card {
+        margin-bottom: 0;
+        /* Grid handles gap */
+        height: 100%;
+        /* Uniform height */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Detail Page on Desktop */
+    .page-detail {
+        max-width: 800px;
+        /* Constrain reading width */
+        margin: 0 auto;
+    }
+
+    .page-detail h1 {
+        font-size: 32px;
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+
+/* New Interactive Elements */
+.interactive-card {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.interactive-card:active {
+    transform: scale(0.97);
+}
+
+/* Opportunity of the Day Overlay Effect */
+.opportunity-day-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Badge Labels */
+.badge-label {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.label-hot {
+    background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+    box-shadow: 0 2px 10px rgba(249, 115, 22, 0.3);
+}
+
+.label-trending {
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+    box-shadow: 0 2px 10px rgba(6, 182, 212, 0.3);
+}
+
+.label-new {
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+    box-shadow: 0 2px 10px rgba(236, 72, 153, 0.3);
+}

@@ -1,0 +1,99 @@
+/* Detail Page */
+.page-detail {
+    padding-bottom: 100px;
+    /* Space for footer */
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.detail-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.insight-card {
+    border: 1px solid var(--accent-primary);
+    background: linear-gradient(180deg, rgba(0, 255, 157, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.insight-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--accent-primary);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.stat-box {
+    background: var(--bg-card);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border: var(--glass-border);
+    text-align: center;
+}
+
+.stat-box .label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.steps-list {
+    list-style: none;
+    margin-top: 16px;
+}
+
+.step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.step-num {
+    font-family: monospace;
+    color: var(--accent-secondary);
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 2px;
+}
+
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: var(--bg-main);
+    z-index: 101;
+    /* Above nav */
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    border-top: var(--glass-border);
+}
